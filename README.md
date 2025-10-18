@@ -1,70 +1,191 @@
-# Getting Started with Create React App
+# SalesDuo Assignment - Amazon Listing Optimizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📁 Project Structure
 
-## Available Scripts
+```
+salesduo_assignment
+├── backend
+│   ├── database
+│   │   └── mock-data.js
+│   ├── routes
+│   │   └── optimize.js
+│   ├── node_modules
+│   ├── .env
+│   ├── database.js
+│   ├── db.sql
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js
+│
+└── frontend
+    ├── node_modules
+    ├── public
+    │   └── vite.svg
+    ├── src
+    │   ├── assets
+    │   ├── components
+    │   │   ├── History.jsx
+    │   │   ├── OptimizeForm.jsx
+    │   │   └── ResultView.jsx
+    │   ├── App.css
+    │   ├── App.jsx
+    │   ├── index.css
+    │   └── main.jsx
+    ├── .gitignore
+    ├── eslint.config.js
+    ├── index.html
+    ├── package-lock.json
+    └── package.json
+```
 
-In the project directory, you can run:
+## ✅ Tech Stack
 
-### `npm start`
+### Dependencies (Backend)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Package        | Purpose                                                 |
+| -------------- | ------------------------------------------------------- |
+| express        | Web framework for creating API routes and server        |
+| dotenv         | Load environment variables from .env file               |
+| axios          | HTTP client (planned for future real Amazon data fetch) |
+| cheerio        | HTML parsing & scraping (imported but currently unused) |
+| mysql2/promise | MySQL client with Promise support                       |
+| cors           | Enable Cross-Origin Resource Sharing                    |
+| @google/genai  | Google GenAI client for AI content generation           |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Dev Dependencies (Recommended)
 
-### `npm test`
+| Package | Purpose                                      |
+| ------- | -------------------------------------------- |
+| nodemon | Automatically restart server on code changes |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Installation Steps
 
-### `npm run build`
+### 1️⃣ Initialize Project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+mkdir amazon-listing-optimizer
+cd amazon-listing-optimizer
+npm init -y
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2️⃣ Install Core Dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install express dotenv axios cheerio mysql2 cors @google/genai
+```
 
-### `npm run eject`
+### 3️⃣ Install Dev Dependencies (Optional)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install --save-dev nodemon
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4️⃣ Setup .env File
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Create a `.env` file in your backend directory and replace placeholders with **your own database password and Google API key**.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+⚠️ Make sure to use **your actual credentials**, not the placeholders below.
+Create a `.env` file in your backend directory
 
-## Learn More
+```env
+PORT=8080
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=alo
+AI_API_KEY=your_google_genai_api_key
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 5️⃣ Update Scripts in package.json
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```json
+"scripts": {
+  "start": "node index.js",
+  "dev": "nodemon index.js"
+}
+```
 
-### Code Splitting
+### 6️⃣ ## ▶️ How to Run Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+```bash
+cd backend
+npm run dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Backend runs by default on `http://localhost:8080`.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 7️⃣ ## ▶️ How to Run Frontend
 
-### Advanced Configuration
+```bash
+cd frontend
+npm run dev
+```
+Frontend runs by default on `http://localhost:5173`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## ✅ Tech Stack
 
-### Deployment
+### Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* Node.js
+* Express.js
+* SQLite (db.sql)
+* dotenv
 
-### `npm run build` fails to minify
+### Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* React (Vite)
+* JSX Components
+* CSS Modules
+
+
+
+
+
+## 🔗 API Routes
+
+### 1. Optimize Product Listing
+
+**Endpoint:** `POST /api/optimize`
+
+**Request Body Example:**
+
+```json
+{
+  "asin": "MOCK001"
+}
+```
+
+### 2. Sample Mock ASINs for Testing
+
+You can use any of the following for demo/testing:
+
+```
+asin: "MOCK001"
+asin: "MOCK002"
+asin: "B07H65KP63"
+asin: "B0B9Y7XQ9X"
+asin: "B0B9Y7XQ9Y"
+asin: "B0B9Y7XQ9Z"
+asin: "B0B9Y7XQ9A"
+asin: "B0B9Y7XQ9B"
+asin: "B0B9Y7XQ9C"
+asin: "B0B9Y7XQ9D"
+asin: "B0B9Y7XQ9E"
+asin: "B0B9Y7XQ9F"
+asin: "B0B9Y7XQ9G"
+
+
+```
+
+This will trigger mocked listing optimization logic based on your sample dataset.
+
+## 📌 Notes
+
+* Uses local SQLite database located in `db.sql`
+* Mock data file located at `backend/database/mock-data.js`
+* Optimized results are shown on the frontend `ResultView.jsx`
+* History is rendered in `History.jsx`
+
+---
